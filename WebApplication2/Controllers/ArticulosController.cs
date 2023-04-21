@@ -7,15 +7,16 @@ namespace WebAppTarea11.Controllers
 {
     public class ArticulosController : Controller
     {
+        ArticuloServices articuloServices = new ArticuloServices();
         public IActionResult Index()
         {
 
-            ArticuloServices articuloServices = new ArticuloServices();
+            
             List<Articulo> articulos = articuloServices.GetAllArticulos();
             return View(articulos);
         }
 
-        
+        [HttpGet]
         public IActionResult Create() { 
             Articulo articuloACrear = new Articulo();
             return View(articuloACrear);
@@ -25,7 +26,16 @@ namespace WebAppTarea11.Controllers
         [HttpPost]
         public IActionResult Create(Articulo articuloAGuardar)
         {
-            return View();
+            string mensaje =articuloServices.AgregarArticulo(articuloAGuardar);
+            if (mensaje == "Articulo agregado")
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.Mensaje = mensaje;
+                return View(articuloAGuardar);
+            }
         }
 
     }

@@ -7,7 +7,7 @@
 }
 
 <h1>Soy el Index de Articulos!</h1>
-
+<a class="btn btn-primary" asp-action="Create">Agregar</a> 
 <table class="table">
     <thead>
         <tr>
@@ -46,6 +46,10 @@
                 <td>@item.Proveedor</td>
                 <td>@item.Precio</td>
                 <td>@item.Codigo</td>
+                <td>
+                    <a class ="btn btn-primary" asp-action="Editar" asp-route-id="@item.Id">Editar</a>
+                    <a class ="btn btn-danger" asp-action="Eliminar" asp-route-id="@item.Id">Eliminar</a>
+                </td>
                 </tr>
                 
 
