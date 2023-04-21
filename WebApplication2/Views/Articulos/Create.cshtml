@@ -1,0 +1,28 @@
+﻿@using CodigoComun.Entities;
+@model Articulo
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1>Crear Articulo</h1>
+
+<div class = "col-md-4">
+    <form asp-action ="Create">
+
+        <div class = "form-group">
+            <label class = "control-label">Nombre</label>
+            <input asp-for="Nombre" class="form-control" />
+        </div>
+
+        <div class="form.froup">
+            <input type = "submit" value="Guardar" class="btn btn-primary" />
+        </div>
+
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">Volver</a>
+</div>
