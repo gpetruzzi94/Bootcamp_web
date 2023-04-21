@@ -38,5 +38,42 @@ namespace WebAppTarea11.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Articulo articuloAEditar = articuloServices.BuscarId(id);
+            return View(articuloAEditar);
+
+
+        }
+        [HttpPost]
+        public IActionResult Edit(Articulo articuloAEditar)
+        {
+            string mensaje = articuloServices.ActualizarArticulo(articuloAEditar);
+            if (mensaje == "Articulo modificado")
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.Mensaje = mensaje;
+                return View(articuloAEditar);
+            }
+        }
+        public IActionResult Delete(int id)
+        {
+            string mensaje = articuloServices.BorrarArticulo(id);
+            if (mensaje == "Articulo eliminado")
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.Mensaje = mensaje;
+                return View();
+            }
+        }
+
+
     }
 }
