@@ -1,0 +1,57 @@
+﻿@using CodigoComun.Entities
+@model IEnumerable<Stock>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Soy el Index de Stocks!</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id:
+            </th>
+            <th>
+                IdArticulo:
+            </th>
+            <th>
+                IdDeposito:
+            </th>
+            <th>
+                Cantidad:
+            </th>
+            <th>
+                Art_Nombre:
+            </th>
+            <th>
+                Art_Codigo:
+            </th>
+            <th>
+                Dep_Nombre:
+            </th>
+
+        </tr>
+    <thead />
+    <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.IdArticulo</td>
+                <td>@item.IdDeposito</td>
+                <td>@item.Cantidad</td>
+                <td>@item.IdArticuloNavigation.Nombre</td>
+                <td>@item.IdArticuloNavigation.Codigo</td>
+                <td>@item.IdDepositoNavigation.Nombre</td>
+            </tr>
+
+
+            }
+    </tbody>
+
+<table />

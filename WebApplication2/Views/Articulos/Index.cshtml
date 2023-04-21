@@ -1,0 +1,54 @@
+﻿@using CodigoComun.Entities
+@model IEnumerable<Articulo>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Soy el Index de Articulos!</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id:
+            </th>
+            <th>
+                Nombre:
+            </th>
+            <th>
+                Marca:
+            </th>
+            <th>
+                MinimoStock:
+            </th>
+            <th>
+                Proveedor:
+            </th>
+            <th>
+                Precio:
+            </th>
+            <th>
+                Codigo:
+            </th>
+
+        </tr>
+    <thead />
+    <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                <td>@item.Id</td>
+                <td>@item.Nombre</td>
+                <td>@item.Marca</td>
+                <td>@item.MinimoStock</td>
+                <td>@item.Proveedor</td>
+                <td>@item.Precio</td>
+                <td>@item.Codigo</td>
+                </tr>
+                
+
+            }
+        </tbody>
+<table />
