@@ -9,7 +9,7 @@ namespace WebAppTarea11.Controllers
     {
         public IActionResult Index()
         {
-            //test
+            
             ArticuloServices articuloServices = new ArticuloServices();
             List<Articulo> articulos = articuloServices.GetAllArticulos();
             return View(articulos);
