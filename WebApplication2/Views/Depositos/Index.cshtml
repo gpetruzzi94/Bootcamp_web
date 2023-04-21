@@ -7,6 +7,7 @@
 @{
 }
 <h1>Soy el Index de Depositos!</h1>
+<a class="btn btn-primary" asp-action="Create">Agregar</a> 
 <table class="table">
 <thead>
     <tr>
@@ -33,6 +34,10 @@
                 <td>@item.Capacidad</td>
                 <td>@item.Nombre</td>
                 <td>@item.Direccion</td>
+                <td>
+                    <a class ="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                    <a class ="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                </td>
             </tr>
 
 
