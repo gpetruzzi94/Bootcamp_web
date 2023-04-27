@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppTarea11", "WebApplication2\WebAppTarea11.csproj", "{C3B05FE7-8A4A-4E1A-A869-A488A865823A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodigoComun", "..\..\..\Downloads\WinFormsAppStock\WinFormsAppStock\CodigoComun\CodigoComun.csproj", "{D000781E-7980-439D-B52E-3CBFBD70909F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C3B05FE7-8A4A-4E1A-A869-A488A865823A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3B05FE7-8A4A-4E1A-A869-A488A865823A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3B05FE7-8A4A-4E1A-A869-A488A865823A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D000781E-7980-439D-B52E-3CBFBD70909F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D000781E-7980-439D-B52E-3CBFBD70909F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D000781E-7980-439D-B52E-3CBFBD70909F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D000781E-7980-439D-B52E-3CBFBD70909F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
