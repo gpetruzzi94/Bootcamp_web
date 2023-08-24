@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CodigoComun.Entities;
 using CodigoComun.Negocio;
+using CodigoComun.DTO;
 
 
 namespace WebAppTarea11.Controllers
@@ -12,28 +13,29 @@ namespace WebAppTarea11.Controllers
         {
 
             
-            List<Articulo> articulos = articuloServices.GetAllArticulos();
+            List<ArticuloDTO> articulos = articuloServices.GetAllArticulos();
             return View(articulos);
         }
 
         [HttpGet]
         public IActionResult Create() { 
-            Articulo articuloACrear = new Articulo();
+            ArticuloDTO articuloACrear = new ArticuloDTO();
             return View(articuloACrear);
 
         
         }
         [HttpPost]
-        public IActionResult Create(Articulo articuloAGuardar)
+        public IActionResult Create(ArticuloDTO articuloAGuardar)
         {
-            string mensaje =articuloServices.AgregarArticulo(articuloAGuardar);
-            if (mensaje == "Articulo agregado")
+            articuloAGuardar =articuloServices.AgregarArticulo(articuloAGuardar);
+            TempData["AlertMessage"] = articuloAGuardar.Mensaje;
+            if (articuloAGuardar.Mensaje == "Articulo agregado")
             {
                 return RedirectToAction("Index");
             }
             else
             {
-                ViewBag.Mensaje = mensaje;
+                
                 return View(articuloAGuardar);
             }
         }
@@ -41,37 +43,37 @@ namespace WebAppTarea11.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            Articulo articuloAEditar = articuloServices.BuscarId(id);
+            ArticuloDTO articuloAEditar = articuloServices.BuscarId(id);
             return View(articuloAEditar);
 
 
         }
         [HttpPost]
-        public IActionResult Edit(Articulo articuloAEditar)
+        public IActionResult Edit(ArticuloDTO articuloAEditar)
         {
-            string mensaje = articuloServices.ActualizarArticulo(articuloAEditar);
-            if (mensaje == "Articulo modificado")
+            articuloAEditar = articuloServices.ActualizarArticulo(articuloAEditar);
+            TempData["AlertMessage"] = articuloAEditar.Mensaje;
+            if (articuloAEditar.Mensaje == "Articulo modificado")
             {
                 return RedirectToAction("Index");
             }
             else
             {
-                ViewBag.Mensaje = mensaje;
+                
                 return View(articuloAEditar);
             }
         }
+        [HttpGet,ActionName("Delete")]
         public IActionResult Delete(int id)
         {
-            string mensaje = articuloServices.BorrarArticulo(id);
-            if (mensaje == "Articulo eliminado")
-            {
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                ViewBag.Mensaje = mensaje;
-                return View();
-            }
+            ArticuloDTO articuloAEliminar = articuloServices.BorrarArticulo(id);
+
+            TempData["AlertMessage"] = articuloAEliminar.Mensaje;
+  
+            return RedirectToAction("Index");
+            
+            
+            
         }
 
 

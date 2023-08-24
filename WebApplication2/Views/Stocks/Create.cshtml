@@ -1,0 +1,52 @@
+﻿
+@using WebAppTarea11.ViewModel;
+@model StockViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Crear Stock</h1>
+
+
+<div class="col-md-4">
+    <form asp-action="Create">
+
+        <div class="form-group">
+            <label class="control-label">Cantidad</label>
+            <input asp-for="stockDTO.Cantidad" class="form-control" />
+        </div>
+        <div class="dropdown">
+            <label class="control-label">IdDeposito</label>
+            <div class="dropdown">
+            @Html.DropDownListFor(model => model.stockDTO.IdDeposito,
+            Model.selectDepositosList,new {@class ="btn btn-secondary dropdown-toggle"})
+            </div>
+        </div>
+        <div class="dropdown">
+            <label class="control-label">IdArticulo</label>
+            <div class="dropdown">
+            @Html.DropDownListFor(model => model.stockDTO.IdArticulo,
+            Model.selectArticulosList,new {@class ="btn btn-secondary dropdown-toggle"})
+            </div>
+        </div>
+        <br />
+        <div class="form.froup">
+            <input type="submit" value="Guardar" class="btn btn-primary" />
+        </div>
+
+    </form>
+</div>
+
+<div class="container">
+    <a asp-action="Index">Volver</a>
+    <br />
+    @if (Model.stockDTO.HuboError == true)
+    {
+        <div class="alert alert-danger" role="alert">
+            <label>@ViewBag.Mensaje</label>
+        </div>
+    }
+
+</div>>

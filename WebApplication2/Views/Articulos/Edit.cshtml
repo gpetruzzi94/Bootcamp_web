@@ -1,5 +1,5 @@
-﻿@using CodigoComun.Entities;
-@model Articulo
+﻿@using CodigoComun.DTO;
+@model ArticuloDTO
 
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -43,8 +43,14 @@
     </form>
 </div>
 
-<div>
+<div class="container">
     <a asp-action="Index">Volver</a>
     <br />
-    <label>@ViewBag.Mensaje</label>
+    @if (Model.HuboError == true)
+    {
+        <div class="alert alert-danger" role="alert">
+            <label>@ViewBag.Mensaje</label>
+        </div>
+    }
+    
 </div>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CodigoComun.Entities;
 using CodigoComun.Negocio;
+using CodigoComun.DTO;
 
 namespace WebAppTarea11.Controllers
 {
@@ -10,7 +11,7 @@ namespace WebAppTarea11.Controllers
         public IActionResult Index()
         {
             
-            List<Deposito> depositos= depositoServices.GetTodosLosDepositos();
+            List<DepositoDTO> depositos= depositoServices.GetTodosLosDepositos();
             return View(depositos);
         }
 
@@ -24,16 +25,18 @@ namespace WebAppTarea11.Controllers
 
         }
         [HttpPost]
-        public IActionResult Create(Deposito depositoAGuardar)
+        public IActionResult Create(DepositoDTO depositoAGuardar)
         {
-            string mensaje = depositoServices.AddDeposito(depositoAGuardar);
-            if (mensaje == "Deposito agregado")
+            depositoAGuardar = depositoServices.AddDeposito(depositoAGuardar);
+            TempData["AlertMessage"] = depositoAGuardar.Mensaje;
+            if (depositoAGuardar.Mensaje == "Deposito agregado")
             {
+                
                 return RedirectToAction("Index");
             }
             else
             {
-                ViewBag.Mensaje = mensaje;
+                
                 return View(depositoAGuardar);
             }
         }
@@ -41,36 +44,41 @@ namespace WebAppTarea11.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            Deposito depositoAEditar = depositoServices.GetDepositoPorId(id);
+            DepositoDTO depositoAEditar = depositoServices.GetDepositoPorId(id);
             return View(depositoAEditar);
 
 
         }
         [HttpPost]
-        public IActionResult Edit(Deposito depositoAEditar)
+        public IActionResult Edit(DepositoDTO depositoAEditar)
         {
-            string mensaje = depositoServices.ModificarDeposito(depositoAEditar);
-            if (mensaje == "Deposito modificado")
+            depositoAEditar = depositoServices.ModificarDeposito(depositoAEditar);
+            TempData["AlertMessage"] = depositoAEditar.Mensaje;
+            if (depositoAEditar.Mensaje == "Deposito modificado")
             {
+                
                 return RedirectToAction("Index");
             }
             else
             {
-                ViewBag.Mensaje = mensaje;
+                
                 return View(depositoAEditar);
             }
         }
+        [HttpGet, ActionName("Delete")]
         public IActionResult Delete(int id)
         {
-            string mensaje = depositoServices.EliminarDeposito(id);
-            if (mensaje == "Deposito eliminado")
+            DepositoDTO depositoAEliminar = depositoServices.EliminarDeposito(id);
+            TempData["AlertMessage"] = depositoAEliminar.Mensaje;
+            if (depositoAEliminar.Mensaje == "Deposito eliminado")
             {
+                
                 return RedirectToAction("Index");
             }
             else
             {
-                ViewBag.Mensaje = mensaje;
-                return View();
+                
+                return RedirectToAction("Index");
             }
         }
 
