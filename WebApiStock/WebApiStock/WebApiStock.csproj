@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Downloads\WinFormsAppStock\WinFormsAppStock\CodigoComun\CodigoComun.csproj" />
+    <ProjectReference Include="..\..\..\..\..\Downloads\WinFormsAppStock\WinFormsAppStock\CodigoComun\CodigoComun.csproj" />
   </ItemGroup>
 
 </Project>
